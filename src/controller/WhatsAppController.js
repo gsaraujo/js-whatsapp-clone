@@ -240,6 +240,46 @@ class WhatsAppController {
 
         });
 
+        this.el.btnSendMicrophone.on('click', e=> {
+
+            this.el.btnSendMicrophone.hide();
+            this.el.recordMicrophone.show();
+            this.startRecordMicrophoneTime();
+
+        });
+
+        this.el.btnCancelMicrophone.on('click', e=>{
+
+            this.closeRecordMicrophone();
+
+
+        });
+
+        this.el.btnFinishMicrophone.on('click', e=>{
+
+            this.closeRecordMicrophone();
+
+        });
+
+
+    }
+
+    startRecordMicrophoneTime(){
+
+        let start = Date.now();
+        this._recordMicrophoneInterval = setInterval(()=>{
+
+            this.el.recordMicrophoneTimer.innerHTML = (Date.now() - start);
+
+        },100);
+
+    }
+
+    closeRecordMicrophone(){
+
+        this.el.btnSendMicrophone.show();
+        this.el.recordMicrophone.hide();
+        clearInterval(this._recordMicrophoneInterval);
 
     }
 
