@@ -1,4 +1,6 @@
-class WhatsAppController {
+import {Format} from './../util/Format';
+import {CameraController} from './CameraController';
+export class WhatsAppController {//export make it a module that can be imported in another module
     constructor() {
         this.elementsPrototype();
         this.loadElements();
@@ -195,6 +197,7 @@ class WhatsAppController {
                 'height': 'calc(100% - 120px)'
             });
 
+            this._cameraController = new CameraController(this.el.videoCamera);
         });
 
         this.el.btnClosePanelCamera.on('click', e=>{
